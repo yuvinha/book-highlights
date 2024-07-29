@@ -12,6 +12,7 @@ import App from "./App";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import HomeScreen from "./screens/HomeScreen";
+import CreateScreen from "./screens/CreateScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +20,7 @@ const router = createBrowserRouter(
       {/* Public routes */}
       <Route index={true} element={<HomeScreen />} />
       {/* Private routes */}
-
+      <Route path="/create" element={<CreateScreen />} />
       {/* Admin routes */}
     </Route>
   )

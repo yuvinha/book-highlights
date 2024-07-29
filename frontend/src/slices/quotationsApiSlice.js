@@ -9,7 +9,24 @@ export const quotationsApiSlice = apiSlice.injectEndpoints({
       }),
       keepUnusedDataFor: 5,
     }),
+    createQuotation: builder.mutation({
+      query: (data) => ({
+        url: QUOTATIONS_URL,
+        method: "POST",
+        body: data,
+      }),
+    }),
+    deleteQuotation: builder.mutation({
+      query: (quotationId) => ({
+        url: `${QUOTATIONS_URL}/${quotationId}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
-export const { useGetQuotationsQuery } = quotationsApiSlice;
+export const {
+  useGetQuotationsQuery,
+  useCreateQuotationMutation,
+  useDeleteQuotationMutation,
+} = quotationsApiSlice;

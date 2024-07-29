@@ -1,11 +1,9 @@
-import { useState } from "react";
-import { AppBar, Toolbar, Button, Stack } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import { AppBar, Toolbar, Button, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { FormatQuote } from "@mui/icons-material";
-import FormDialog from "./FormDialog";
 
 const Header = () => {
-  const [addNewOpen, setAddNewOpen] = useState(false);
   const theme = useTheme();
 
   return (
@@ -21,23 +19,20 @@ const Header = () => {
             color: theme.palette.primary.light,
           }}
         >
-          <Stack direction="row" alignItems="center">
+          <IconButton component={RouterLink} to="/">
             <FormatQuote sx={{ fontSize: 48 }} />
-            {/* <Typography variant="h6" component="div" sx={{ fontWeight: "bold" }}>
-            Quotes
-          </Typography> */}
-          </Stack>
+          </IconButton>
           <Button
+            component={RouterLink}
+            to="/create"
             color="primary"
             size="large"
             variant="contained"
-            onClick={() => setAddNewOpen(true)}
           >
             Add New
           </Button>
         </Toolbar>
       </AppBar>
-      <FormDialog open={addNewOpen} setOpen={setAddNewOpen} />
     </>
   );
 };
